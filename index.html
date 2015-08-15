@@ -17,7 +17,7 @@
             <label for="fib-num">Number</label>
             <input class="form-control" type="number" id="fib-num" ng-model="ctrl.num">
           </div>
-          <span ng-if="ctrl.error" class="help-block">{{ctrl.error}}</span>
+          <div ng-if="ctrl.error" class="help-block">{{ctrl.error}}</div>
           <button class="btn btn-default pull-right" ng-click="ctrl.getResult()">Calculate</button>
       </form>
       <div class="row">

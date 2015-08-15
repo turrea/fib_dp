@@ -5,4 +5,5 @@ Calculate Fibonacci numbers using dynamic programming
 I'm trying to get a better understanding of dynamic programming to improve the solution in my sum finding project.
 
 ## Solution
-[Link to embedded Plunker](http://embed.plnkr.co/ygmjxPuagYrOW8lDf6p4/preview)
+* [Solution in Action](http://run.plnkr.co/wU2oAlSqdlvgi0QE/)
+* [Embedded Plunker](http://embed.plnkr.co/ygmjxPuagYrOW8lDf6p4/preview)
