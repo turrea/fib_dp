@@ -1,49 +1,46 @@
-(function(window){
+(function() {
   'use strict';
 
-  function fib_dp(num) {
-    var index = null;
-    var newVal = null;
-    var result = {
-      sum: null,
-      set: null
-    };
+  angular
+    .module('fibDpApp', ['FibDp'])
+    .controller('fibDpAppController', fibDpAppController)
+    .filter('fibDpExplode', fibDpExplode);
 
-    if(typeof num !== 'number') {
-      throw "Must provide a number."
-    }
 
-    if(num < 0) {
-      throw "Number must be greater than or equal to 0"
-    }
+  function fibDpAppController(FibDpFactory) {
+    var vm = this;
 
-    //base cases: when num is 0 or 1
-    if(num === 0) {
-      result.sum = 0;
-      result.set = [0];
-    }
-    else if(num === 1) {
-      result.sum = 1;
-      result.set = [0, 1];
-    }
-    //otherwise build bottom up to result starting from 2
-    else {
-      result.sum = 1;
-      result.set = [0, 1];
+    vm.num = 0;
+    vm.result = null;
+    vm.error = null;
 
-      for(index = 2; index <= num; index++) {
-        newVal = result.set[index-1] + result.set[index-2];
-        result.sum += newVal;
-        result.set.push(newVal);
-
-        //TODO: check if number is too big to accurately represent?
+    vm.getResult = function() {
+      try {
+        vm.result = FibDpFactory(vm.num);
+        vm.error = null;
       }
-    }
-
-    return result;
+      catch(e) {
+        vm.result = null;
+        vm.error = e;
+      }
+    };
   }
 
-  window.sampleNs = window.sampleNs || {};
-  window.sampleNs.fib_dp = fib_dp;
+  fibDpAppController.$inject = ['FibDpFactory'];
 
-})(window);
+  function fibDpExplode() {
+    return function(arr, delimiter) {
+      var result = "";
+
+      angular.forEach(arr, function(val, index) {
+        if(index > 0) {
+          result += ', '
+        }
+        result += val;
+      });
+
+      return result;
+    }
+  }
+
+})();
