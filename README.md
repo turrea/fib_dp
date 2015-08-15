@@ -1,7 +1,7 @@
 # fib_dp
 Calculate Fibonacci numbers using dynamic programming
 
-## Motiviation
+## Motivation
 I'm trying to get a better understanding of dynamic programming to improve the solution in my sum finding project.
 
 ## Solution
