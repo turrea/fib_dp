@@ -13,9 +13,9 @@
   function fib_dp(num) {
     var index = null;
     var newVal = null;
-    var result = {
-      sum: null,
-      set: null
+    var resultObj = {
+      result: null,
+      resultSet: null
     };
 
     if(typeof num !== 'number') {
@@ -28,28 +28,28 @@
 
     //base cases: when num is 0 or 1
     if(num === 0) {
-      result.sum = 0;
-      result.set = [0];
+      resultObj.result = 0;
+      resultObj.resultSet = [0];
     }
     else if(num === 1) {
-      result.sum = 1;
-      result.set = [0, 1];
+      resultObj.result = 1;
+      resultObj.resultSet = [0, 1];
     }
-    //otherwise build bottom up to result starting from 2
+    //otherwise build bottom up to resultObj starting from 2
     else {
-      result.sum = 1;
-      result.set = [0, 1];
+      resultObj.result = 1;
+      resultObj.resultSet = [0, 1];
 
       for(index = 2; index <= num; index++) {
-        newVal = result.set[index-1] + result.set[index-2];
-        result.sum += newVal;
-        result.set.push(newVal);
+        newVal = resultObj.resultSet[index-1] + resultObj.resultSet[index-2];
+        resultObj.result += newVal;
+        resultObj.resultSet.push(newVal);
 
         //TODO: check if number is too big to accurately represent using Number.MAX_VALUE or Number.MAX_SAFE_INTEGER?
       }
     }
 
-    return result;
+    return resultObj;
   }
 
 })();

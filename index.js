@@ -11,12 +11,12 @@
     var vm = this;
 
     vm.num = 0;
-    vm.result = null;
+    vm.resultObj = null;
     vm.error = null;
 
     vm.getResult = function() {
       try {
-        vm.result = FibDpFactory(vm.num);
+        vm.resultObj = FibDpFactory(vm.num);
         vm.error = null;
       }
       catch(e) {
